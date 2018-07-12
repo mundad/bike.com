@@ -20,10 +20,10 @@ $(document).ready(function(){
 	$("#phone").on("input",function(){
 		if($("#phone").val().length>5){
 			var n=$("#phone").val();
-			alert("sss");
-			$.post( "http://192.168.0.100/json/user", { phone: n }, function( data ) {
-			  alert(data);
-			}, "json");
+		
+			$.post("http://192.168.0.100/json/user", { phone: n },viewResult,"json" });
+			
+			
             /*$.post('http://192.168.0.100/json/user',{ phone: n },function (data) {
                 data=JSON.parse(data);
 				alert("sss");
@@ -138,6 +138,9 @@ $(document).ready(function(){
 		total_price();
 	});
 });
+function viewResult(data) {
+				alert(data)
+}
 function total_price(){
 	subtotal=0;
 	total=0;
