@@ -20,17 +20,21 @@ $(document).ready(function(){
 	$("#phone").on("input",function(){
 		if($("#phone").val().length>5){
 			var n=$("#phone").val();
-            $.post('http://192.168.0.100/json/user',{ "phone": n },function (data) {
+			alert("sss");
+			$.post( "http://192.168.0.100/json/user", { phone: n }, function( data ) {
+			  alert(data);
+			}, "json");
+            /*$.post('http://192.168.0.100/json/user',{ phone: n },function (data) {
                 data=JSON.parse(data);
-				alert(data);
+				alert("sss");
                 /*for(var id in data){
                     info[id]=data[id];
                 }
                 $("#name").val(info['name']);
                 $("#secondname").val(info['second_name']);
                 $("#adress").val(info['adress']);
-                $("#email").val(info['email']);*/
-            });
+                $("#email").val(info['email']);
+            });*/
 		}
 	});
 	$("#hrs").on("change",function () {
