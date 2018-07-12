@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>BIKE.IO</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="index.html">Bike.io</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">John Doe</p>
+          <p class="app-sidebar__user-designation">Frontend Developer</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item active" href="rental.html"><i class="app-menu__icon fa fa-bicycle"></i><span class="app-menu__label">Rental Bike</span></a></li>
+        <li><a class="app-menu__item " href="print.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Print check</span></a></li>
+        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+
+      </ul>
+    </aside>
+
+
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-dashboard"></i> Admin</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div class="tile">
+            <div class="col-md-12 text-center">
+              <h3>SELECT AGENT ADD RENTAL BIKE</h3>
+            </div>
+            <div class="tile-body">
+              <form method="post">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="Agent">Agent</label>
+                    <input type="text" name="agent" required class="form-control" id="Agent" placeholder="Enter agent ID">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="phone">Phone number</label>
+                    <input type="text" name="phone" required class="form-control" id="phone" placeholder="Enter phone number">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required class="form-control" id="name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="secondname">Second name</label>
+                    <input type="text" name="second_name" required class="form-control" id="secondname" placeholder="Enter second name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="adress">Address</label>
+                    <input type="text" name="address" required class="form-control" id="adress" placeholder="Enter address">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" required  class="form-control" id="email" placeholder="Enter email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="deposit">Deposit</label>
+                  <textarea id="deposit" name="deposit" required class="form-control" placeholder="Enter deposit"></textarea>
+                </div>
+                <hr>
+                <div class="col-md-12 text-center">
+                  <h3>RENTL AGREEMENT</h3>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 bb">
+                    <table class="table table-striped table-bordered">
+                      <thead>
+                      <tr class="active">
+                        <th>BIKES</th>
+                        <th>QTY.</th>
+                        <th>HRS.</th>
+                        <th>TIMEOUT</th>
+                        <th>TIMEIN</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="active">
+                          <td>Adult bikes</td>
+                          <td><input type="number" id="adult_qty" required name="adult_qty" class="form-control inputs" placeholder=""></td>
+                          <td><input type="number" id="adult_hrs"  name="adult_hrs" class="form-control inputs" placeholder=""></td>
+                          <td><input type="date"  id="adult_time_out" name="adult_time_out" class="form-control input_dates" placeholder=""></td>
+                          <td><input type="date" id="adult_time_in" name="adult_time_in" class="form-control input_dates" placeholder=""></td>
+                        </tr>
+                        <tr class="active">
+                          <td scope="row">Kids bikes	</td>
+                          <td><input type="number" id="kids_qty" required name="kids_qty" class="form-control" placeholder=""></td>
+                          <td><input type="number" id="kids_hrs" name="kids_hrs" class="form-control" placeholder=""></td>
+                          <td><input type="date" id="kids_time_out" name="kids_time_out" class="form-control" placeholder=""></td>
+                          <td><input type="date" id="kids_time_in" name="kids_time_in" class="form-control" placeholder=""></td>
+                        </tr>
+                        <tr class="active">
+                          <td scope="row">Tandem  bikes	</td>
+                          <td><input type="number" id="tandem_qty" required name="tandem_qty" class="form-control" placeholder=""></td>
+                          <td><input type="number" id="tandem_hrs" name="tandem_hrs" class="form-control" placeholder=""></td>
+                          <td><input type="date" id="tandem_time_out" name="tandem_time_out" class="form-control" placeholder=""></td>
+                          <td><input type="date" id="tandem_time_in" name="tandem_time_in" class="form-control" placeholder=""></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <hr>
+                <div class="col-md-12 text-center">
+                  <h3>ACCESSORIES</h3>
+                </div>
+                <div class="">
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr class="active">
+                      <th>Helmet</th>
+                      <th>Lock.</th>
+                      <th>Basket</th>
+                      <th>Baby seat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="active">
+                      <td >
+                        <input type="number" class="form-control" id="helmet" placeholder="Enter count">
+                      </td>
+                      <td>
+                        <input type="number" class="form-control" id="lock" placeholder="Enter count">
+                      </td>
+                      <td>
+                        <input type="number" class="form-control" id="basket" placeholder="Enter count">
+                      </td>
+                      <td>
+                        <input type="number" class="form-control" id="babyseat" placeholder="Enter count">
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <hr>
+                <div class="col-md-12 text-center">
+                  <h3>PAYMAENT METHOD</h3>
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr class="warning">
+                      <th>Cash</th>
+                      <th>Card</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="warning">
+                      <td>
+                        <div class="col-md-3">
+                          <input type="radio" class="" checked value="cash" name="paymaent_method">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="col-md-3">
+                          <input type="radio" class="" value="card" name="paymaent_method">
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <hr>
+                <div class="total" >
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr class="warning">
+                      <th>Sub Total</th>
+                      <th>Discount</th>
+                      <th>Sub Total with Discount</th>
+                      <th>Insurance</th>
+                      <th>
+                        <input type="checkbox" id="taxx" name="tax" value="1" checked>
+                        Tax@8.875
+                      </th>
+                      <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="warning">
+                      <td >
+                        <input disabled type="number" class="form-control" id="sb_t" >
+                      </td>
+                      <td >
+                        <input  type="number" class="form-control" id="dis" >
+                      </td>
+                      <td >
+                        <input  disabled type="number" class="form-control" id="sb_t_w_d" >
+                      </td>
+                      <td >
+                        <input  type="number" class="form-control" id="ins" >
+                      </td>
+                      <td>
+                        <input disabled type="number" class="form-control" id="tax" >
+                      </td>
+                      <td>
+                        <input disabled type="number" class="form-control" id="total" >
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tile-footer">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" onclick="window.refresh()" href=""><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/app_scripts.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <script type="text/javascript" src="js/plugins/chart.js"></script>
+    <script type="text/javascript">
+      var data = {
+      	labels: ["January", "February", "March", "April", "May"],
+      	datasets: [
+      		{
+      			label: "My First dataset",
+      			fillColor: "rgba(220,220,220,0.2)",
+      			strokeColor: "rgba(220,220,220,1)",
+      			pointColor: "rgba(220,220,220,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(220,220,220,1)",
+      			data: [65, 59, 80, 81, 56]
+      		},
+      		{
+      			label: "My Second dataset",
+      			fillColor: "rgba(151,187,205,0.2)",
+      			strokeColor: "rgba(151,187,205,1)",
+      			pointColor: "rgba(151,187,205,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(151,187,205,1)",
+      			data: [28, 48, 40, 19, 86]
+      		}
+      	]
+      };
+      var pdata = [
+      	{
+      		value: 300,
+      		color: "#46BFBD",
+      		highlight: "#5AD3D1",
+      		label: "Complete"
+      	},
+      	{
+      		value: 50,
+      		color:"#F7464A",
+      		highlight: "#FF5A5E",
+      		label: "In-Progress"
+      	}
+      ]
+      
+      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+      var lineChart = new Chart(ctxl).Line(data);
+      
+      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp).Pie(pdata);
+    </script>
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>BIKE.IO</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini rtl">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="index.html">Bike.io</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+                <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+        <div>
+            <p class="app-sidebar__user-name">John Doe</p>
+            <p class="app-sidebar__user-designation">Frontend Developer</p>
+        </div>
+    </div>
+    <ul class="app-menu">
+        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item " href="rental.html"><i class="app-menu__icon fa fa-bicycle"></i><span class="app-menu__label">Rental Bike</span></a></li>
+        <li><a class="app-menu__item active" href="print.html"><i class="app-menu__icon fa fa-print"></i><span class="app-menu__label">Print check</span></a></li>
+        <li><a class="app-menu__item " href="index.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+
+    </ul>
+</aside>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Admin</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="tile">
+                <div class="col-md-12 text-center">
+                    <h3>SELECT AGENT</h3>
+                </div>
+                <div class="tile-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div id="page_print">
+                <div id="page_content">
+                    <h5 class="text-center">Central Park Wheels</h5>
+                    <table>
+                        <tr>
+                            <td style="top: 0; margin-top: 0">address:</td>
+                            <td>1409 6th Ave, New York, NY 10019  </td>
+                        </tr>
+                        <tr>
+                            <td>phone:</td>
+                            <td>212-960-3637</td>
+                        </tr>
+                        <tr>
+                            <td>Served By:</td>
+                            <td>Lucy Hayes</td>
+                        </tr>
+                        <tr>
+                            <td>Rent Date:</td>
+                            <td>07-01-2018</td>
+                        </tr>
+                        <tr>
+                            <td>Rent time:</td>
+                            <td>05:15 pm</td>
+                        </tr>
+                        <tr>
+                            <td>Duration:</td>
+                            <td>1 hour</td>
+                        </tr>
+                        <tr>
+                            <td>Must return by:</td>
+                            <td>06:15 pm<br> 07-01-2018</td>
+                        </tr>
+                        <tr>
+                            <td>Customer:</td>
+                            <td>Alexandre Gouvea</td>
+                        </tr>
+                        <tr>
+                            <td>Customer phone:</td>
+                            <td>9084160934</td>
+                        </tr>
+                        <tr>
+                            <td>Bike:</td>
+                            <td>Adult: <b>4</b>/
+                                Kids: <b>0</b>/
+                                Tandem: <b>1</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Accessories:</td>
+                            <td>Helmet: <b>4</b>/
+                                Lock: <b>0</b>/
+                                Basket: <b>1</b>/
+                                Baby seat: <b>1</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Insurance:</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Deposit/ID:</td>
+                            <td>ID</td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td><b>$60.00</b></td>
+                        </tr>
+                        <tr>
+                            <td>NYC Tax(8.875%)</td>
+                            <td><b>$5.33</b></td>
+                        </tr>
+                        <tr>
+                            <td>Total after Tax(cash):</td>
+                            <td><b>$65.33</b></td>
+                        </tr>
+                    </table>
+                    <h5 class="text-center">Terms and Conditions</h5>
+                    <p class="page_content_text">
+                        <b>Activity.</b> I have chosen to rent and participate in bike rental services (hereinafter referred to as “the Activity,” which is organized by Central Park Wheels (hereinafter referred to as “CPW”). I understand that the Activity is inherently hazardous and i may be exposed to dangers and hazards, including some of the following: falls, injuries associated with a fall, injuries from lack of fitness, death, equipment failures and negligence of others. As a consequence of these riskis, i may be seriously hurt or disabled or may die from the resulting injuries and my property may also be damaged. In consideration of the permission to participate in the Activity, i agree to the terms and contained in this contract. I agree to the follow the rules and directions for the Activity, including any New York State traffic laws and park rules.
+                    </p>
+                    <p class="page_content_text">
+                        <b>Liability.</b> All adult customers assume full liability and ride at their own risk. If you feel that you or anyone in your party cannot operate a bicycle safely and competently, that person should not rent or ride bicycle. All children are to be supervised at all times by their parents or adult over the age of 18. Children under the age of 14 must wear a helmet pursuant to New York State Law. With the purchase of bicycle services, you hereby release and hold harmless from all liabilities, causes of action, claims and demands that may arise in any way from injury, death, loss or harm that may occur. This release does not extend to any claims for gross negligence, international or reckless misconduct. I acknowledge that CPW has to control over and assumes no responsibility for the actions of any independent contractors providing any services for the Activity.
+                    </p>
+                    <p class="page_content_text">
+                        <b>Bike Rental Insurance:</b> Bike rental insurance is available at additional cost. Customer who didn’t purchase bike rental insurance, have to pay full amount $400 for a lost or stolen bike. Customers who had purchased Bike Rental Insurance are indemnified and protected against 100% of the cost of damages and repairs; and 50% of replacement cost. Customers are not responsible for costs of repairs to damages bicycles during normal use, wear and tear when they purchase Bike Rental Insurance. Bike Rental Insurance does not indemnify for any cost or liability that arises as a result of personal injury, coverage shall apply only to property damage. Bike Rental Insurance includes damaged bike pick up within Central Park only.
+                    </p>
+                    <p class="page_content_text">
+                        <b>Late Fee:</b> A 15 minute grace period shall be allowed for the return of bicycles following the cessation of bike rental period, with no late fee charged. If you don’t return any bicycle or child seat for any reason before that 15 - minute grace period, the hourly late fee begins calculating and you will be required to pay an appropriate late fee. Late Fee Prices: Adult Bikes, Child Bikes and Child Bike Trailers =$10 per bike-per hour, Tandem Bikes, Road Bikes, Mountain Bikes and Hand-cycles =$20 per hour per bike; Child Seat $5 per hour per seat. Late Fee may not be waived except by cause or emergency, and only approval of Manager.
+                    </p>
+                    <p class="page_content_text">
+                        <b>All Sales Are Final:​</b> No bicycle may be rented without signature and liability acceptance of responsible adult. No cash refund for any reason; nor may the store credit be applied for unused bicycle during rental time.
+                    </p>
+                    <br>
+                    <p>
+                        ____________________________________ Signature
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-success" id="print_button"><i class="fa fa-print"></i>Print Check</button>
+        </div>
+
+    </div>
+
+
+</main>
+<!-- Essential javascripts for application to work-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/app_scripts.js"></script>
+<script src="js/print_check.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src="js/plugins/pace.min.js"></script>
+<!-- Page specific javascripts-->
+<script type="text/javascript" src="js/plugins/chart.js"></script>
+<script type="text/javascript">
+    var data = {
+        labels: ["January", "February", "March", "April", "May"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [65, 59, 80, 81, 56]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 86]
+            }
+        ]
+    };
+    var pdata = [
+        {
+            value: 300,
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "Complete"
+        },
+        {
+            value: 50,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "In-Progress"
+        }
+    ]
+
+    var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+    var lineChart = new Chart(ctxl).Line(data);
+
+    var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+    var pieChart = new Chart(ctxp).Pie(pdata);
+</script>
+<!-- Google analytics script-->
+<script type="text/javascript">
+    if(document.location.hostname == 'pratikborsadiya.in') {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-72504830-1', 'auto');
+        ga('send', 'pageview');
+    }
+</script>
+</body>
+</html>
