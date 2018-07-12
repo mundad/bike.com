@@ -27,11 +27,10 @@
                         <td>Rent time:</td>
                         <td>{{ date('h:i A',strtotime($rental->created_at)) }}</td>
                     </tr>
-                </table>
-                <table>
-                    <th>
-                        Customer info
-                    </th>
+                    <tr><td colspan="2">
+                            <b>Customer info</b>
+                        </td>
+                    </tr>
                     <tr>
                         <td>Name:</td>
                         <td>{{ $rental->user_get->name.' '.$rental->user_get->second_name }}</td>
@@ -45,7 +44,7 @@
                         <td>{{ $rental->user_get->address }}</td>
                     </tr>
                     <tr>
-                        <td>Customer phone:</td>
+                        <td>Bikes:</td>
                          <td>
                         @foreach($biketypes as $biketype)
                             @foreach($rental_bikes as $rental_bike)

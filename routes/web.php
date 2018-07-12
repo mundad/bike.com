@@ -72,4 +72,4 @@ Route::post('/report/agentpaid/search', 'ReporttController@paidsearch')->name('p
 
 ///////////////////////////////////////////////////////////////////////
 Route::get('/json/biketype','JsonSenderController@biketype');
-Route::post('/json/user','JsonSenderController@user_get')->name('jsu');
+Route::get('/json/user','JsonSenderController@user_get')->name('jsu');

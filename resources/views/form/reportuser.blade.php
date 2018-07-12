@@ -39,7 +39,7 @@
                 <th>User_get_phone</th>
                 <th>Total</th>
                 <th>Rent date time</th>
-                <th>IN</th>
+                <th>Return</th>
             </tr>
             </thead>
             <tbody>

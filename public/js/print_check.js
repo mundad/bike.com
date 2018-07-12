@@ -15,3 +15,6 @@ function Popup(data)
     mywindow.close();
     return true;
 }
+$("#print_button").on("click",function () {
+        PrintElem("#page_content");
+    });

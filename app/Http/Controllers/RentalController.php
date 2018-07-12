@@ -112,7 +112,7 @@ class RentalController extends HomeController
             'pay'=>'integer|in:1,2',
             'baby_seat'=>'integer|nullable',
             'basket'=>'integer|nullable',
-            'total'=>'numeric|min:1',
+            'total'=>'required|numeric',
             'sub_total'=>'numeric',
             'insurance'=>'numeric|nullable|min:0',
             'hrs'=>'numeric|nullable|min:0',

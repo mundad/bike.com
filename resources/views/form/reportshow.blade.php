@@ -28,11 +28,11 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>User_get</th>
-            <th>User_get_phone</th>
+            <th>Customer name</th>
+            <th>Customer phone</th>
             <th>Total</th>
             <th>Sub-Total</th>
-            <th>Created_date</th>
+            <th>Rental date</th>
             <th>Status</th>
         </tr>
         </thead>

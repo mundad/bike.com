@@ -18,23 +18,20 @@ $(document).ready(function(){
 		}
 	});
 	$("#phone").on("input",function(){
+		$("#name").val('');
+        $("#second_name").val('');
+        $("#address").val('');
+        $("#email").val('');
 		if($("#phone").val().length>5){
 			var n=$("#phone").val();
-		
-			$.post("http://192.168.0.100/json/user", { phone: n },viewResult,"json" });
 			
-			
-            /*$.post('http://192.168.0.100/json/user',{ phone: n },function (data) {
+            $.get('http://192.168.0.100/json/user',{ phone: n },function (data) {
                 data=JSON.parse(data);
-				alert("sss");
-                /*for(var id in data){
-                    info[id]=data[id];
-                }
-                $("#name").val(info['name']);
-                $("#secondname").val(info['second_name']);
-                $("#adress").val(info['adress']);
-                $("#email").val(info['email']);
-            });*/
+                $("#name").val(data[0]['name']);
+                $("#second_name").val(data[0]['second_name']);
+                $("#address").val(data[0]['address']);
+                $("#email").val(data[0]['email']);
+            });
 		}
 	});
 	$("#hrs").on("change",function () {
@@ -138,9 +135,7 @@ $(document).ready(function(){
 		total_price();
 	});
 });
-function viewResult(data) {
-				alert(data)
-}
+
 function total_price(){
 	subtotal=0;
 	total=0;

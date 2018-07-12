@@ -174,7 +174,7 @@
                         <input disabled type="number"  value="{{old('tax')?old('tax'):0}}"  name="tax" class="form-control" id="tax" >
                     </td>
                     <td>
-                        <input type="number" placeholder="TOTAL" value="{{old('total')}}"  name="total" class="form-control" id="total" >
+                        <input type="text" placeholder="TOTAL" value="{{old('total')}}"  name="total" class="form-control" id="total" >
                     </td>
                 </tr>
                 </tbody>
@@ -192,11 +192,4 @@
         </div>
 @endif
     <script src="{{ asset('js/app_scripts.js') }}"></script>
-</form>
-
-<form method="post" action="{{ route('jsu') }}">
-    @csrf
-    <input type="number" name="phone">
-    <input type="submit">
-
 </form>
