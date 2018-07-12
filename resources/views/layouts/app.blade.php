@@ -44,7 +44,7 @@
 </head>
 <body class="app sidebar-mini rtl">
 
-<header class="app-header"><a class="app-header__logo" href="index.html">Bike.io</a>
+<header class="app-header"><a class="app-header__logo" href="{{ route('home') }}">Bike.io</a>
         <!-- User Menu-->
         @guest
             <!-- Navbar Right Menu-->

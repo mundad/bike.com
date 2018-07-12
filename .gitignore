@@ -1,4 +1,4 @@
-/node_modules
+﻿/node_modules
 /public/hot
 /public/storage
 /storage/*.key
@@ -6,6 +6,9 @@
 /.idea
 /.vscode
 /.vagrant
+/.BackUP
+/assets
+/runtime
 Homestead.json
 Homestead.yaml
 npm-debug.log

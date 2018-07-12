@@ -17,7 +17,7 @@ class JsonSenderController extends HomeController
     }
 
     public function user_get(Request $request){
-        return User_get::where('phone','like',$request->input('phone').'%')->toJson();
+        return User_get::where('phone','like',$request->input('phone').'%')->get()->toJson();
     }
 
     //

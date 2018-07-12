@@ -145,7 +145,10 @@
                     <th>Sub Total</th>
                     <th>Discount</th>
                     <th>Sub Total with Discount</th>
-                    <th>Insurance</th>
+                    <th>
+                        <input type="checkbox" id="insur" name="insur" value="1">
+                        Insurance
+                    </th>
                     <th>
                         <input type="checkbox" id="taxx" name="tax" value="1" checked>
                         Tax@ {{ $tax }}
@@ -156,19 +159,19 @@
                 <tbody>
                 <tr class="warning">
                     <td >
-                        <input disabled type="number" value="{{old('sub_total')?old('sub_total'):1}}"  name="sub_total"   class="form-control" id="sb_t" >
+                        <input disabled type="number"  value="{{old('sub_total')?old('sub_total'):0}}"  name="sub_total"   class="form-control" id="sb_t" >
                     </td>
                     <td >
-                        <input  type="number" class="form-control" value="{{session('old.dis')?session('old.dis'):1}}"  name="dis" id="dis" >
+                        <input  type="number" class="form-control" value="{{session('old.dis')?session('old.dis'):0}}"  name="dis" id="dis" >
                     </td>
                     <td >
                         <input  disabled type="number" class="form-control" id="sb_t_w_d" >
                     </td>
                     <td >
-                        <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):1}}" class="form-control" id="ins" >
+                        <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):0}}" class="form-control" id="ins" >
                     </td>
                     <td>
-                        <input disabled type="number"  value="{{old('tax')?old('tax'):1}}"  name="tax" class="form-control" id="tax" >
+                        <input disabled type="number"  value="{{old('tax')?old('tax'):0}}"  name="tax" class="form-control" id="tax" >
                     </td>
                     <td>
                         <input type="number" placeholder="TOTAL" value="{{old('total')}}"  name="total" class="form-control" id="total" >
@@ -180,7 +183,7 @@
     </div>
     <!-- Change this to a button or input when using this as a form -->
     <span id="check_login_all">
-        <button class="btn btn-primary" id="test" type="button"><i class="fa fa-save"></i>test</button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" onclick="window.refresh()" href=""><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+        &nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>Save</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" onclick="window.refresh()" href=""><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
 
     </span>
 @else
@@ -189,4 +192,11 @@
         </div>
 @endif
     <script src="{{ asset('js/app_scripts.js') }}"></script>
+</form>
+
+<form method="post" action="{{ route('jsu') }}">
+    @csrf
+    <input type="number" name="phone">
+    <input type="submit">
+
 </form>

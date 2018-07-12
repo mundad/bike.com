@@ -140,7 +140,10 @@
                     <th>Sub Total</th>
                     <th>Discount</th>
                     <th>Sub Total with Discount</th>
-                    <th>Insurance</th>
+                    <th>
+                        <input type="checkbox" id="insur" name="insur" value="1" checked>
+                        Insurance
+                    </th>
                     <th>
                         <input type="checkbox" id="taxx" name="tax" value="1" checked>
                         Tax@ {{ $tax }}
@@ -151,19 +154,19 @@
                 <tbody>
                 <tr class="warning">
                     <td >
-                        <input disabled type="number" value="{{session('old.sub_total')?session('old.sub_total'):1}}"  name="sub_total"   class="form-control" id="sb_t" >
+                        <input disabled type="number" value="{{session('old.sub_total')?session('old.sub_total'):0}}"  name="sub_total"   class="form-control" id="sb_t" >
                     </td>
                     <td >
-                        <input  type="number" class="form-control" value="{{session('old.dis')?session('old.dis'):1}}"  name="dis" id="dis" >
+                        <input  type="number" class="form-control" value="{{session('old.dis')?session('old.dis'):0}}"  name="dis" id="dis" >
                     </td>
                     <td >
                         <input  disabled type="number" class="form-control" id="sb_t_w_d" >
                     </td>
                     <td >
-                        <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):1}}" class="form-control" id="ins" >
+                        <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):0}}" class="form-control" id="ins" >
                     </td>
                     <td>
-                        <input disabled type="number"  value="{{session('old.tax')?session('old.tax'):1}}"  name="tax" class="form-control" id="tax" >
+                        <input disabled type="number"  value="{{session('old.tax')?session('old.tax'):0}}"  name="tax" class="form-control" id="tax" >
                     </td>
                     <td>
                         <input type="number" placeholder="TOTAL" value="{{session('old.total')}}"  name="total" class="form-control" id="total" >

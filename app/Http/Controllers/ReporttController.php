@@ -12,7 +12,6 @@ use App\User;
 use App\User_get;
 use App\Accessories;
 use App\Sale;
-use App\Agentpaid;
 use Auth;
 use Validator;
 class ReporttController extends HomeController
@@ -324,7 +323,8 @@ class ReporttController extends HomeController
                 ]);
                 return $this->changerent($request->input('date'),$request->input('date2'));
             }
-        }else   return redirect(route('show_rentalbike'));
+        }
+        return redirect(route('show_rentalbike'));
     }
     //
 }

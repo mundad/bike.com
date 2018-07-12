@@ -125,13 +125,14 @@ class RentalController extends HomeController
         $qtr=array();
         $hrs=0;
         $sdate=session('datetime');
-        $mdate=-1;
         $totalmath=0;
         $ph=array();
         $pd=array();
         $arr=array();
         $k=0;
         $ik=0;
+        $date1=0;
+        $date2=0;
         foreach ($biketypes as $biketype) {
             $ph=array_add($ph,$biketype->id,$biketype->price_h);
             //dd($biketype);
@@ -232,8 +233,6 @@ class RentalController extends HomeController
                         $totalmath=$totalmath+$pd[$qtr[$i]]*$request->input('qty_' . $qtr[$i])*(strtotime($request->input('time_in'))-strtotime($request->input('time_out')))/3600/24;
                     }
                 }
-                $date1=0;
-                $date2=0;
                 if($hrs!=0){
                     $date1= date('Y-m-d H:i:s');
                     $date2= date('Y-m-d H:i:s', strtotime($hrs . ' hour'));
