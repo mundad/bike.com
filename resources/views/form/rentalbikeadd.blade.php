@@ -58,7 +58,7 @@
     <div class="row" id="bikes">
         @foreach($biketypes as $biketype)
             <div class="form-group  col-md-4 float-left">
-                <b>{{strtoupper($biketype->name.' count')}}</b><br/>
+                <b>{{strtoupper($biketype->name)}}</b><br/>
                 <input name='qty_{{$biketype->id}}' id='qty_{{$biketype->id}}' value="{{old('qty_'.$biketype->id)}}" type="number"  class="form-control" onchange="change_qty({{ $biketype->id }})">
                 {{--<input type="button" onclick="alert(bike[k])">--}}
             </div>
@@ -112,7 +112,7 @@
         <hr/>
     <div class="form-group">
         <div class="col-md-12 text-center">
-            <h3>PAYMAENT METHOD</h3>
+            <h3>PAYMENT METHOD</h3>
         </div>
         <div class="col-md-6">
             <table class="table table-striped table-bordered">

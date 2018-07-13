@@ -28,7 +28,7 @@
                         <td>{{ date('h:i A',strtotime($rental->created_at)) }}</td>
                     </tr>
                     <tr><td colspan="2">
-                            <b>Customer info</b>
+                            <b>Customer's info</b>
                         </td>
                     </tr>
                     <tr>

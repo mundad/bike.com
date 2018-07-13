@@ -64,12 +64,12 @@
             <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
             <!-- Navbar Right Menu-->
             <ul class="app-nav">
-            <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu" aria-haspopup="true" aria-expanded="false" v-pre><i class="fa fa-user fa-lg"> </i> <span class="caret">{{ Auth::user()->name }}</span></a>
+            <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu" aria-haspopup="true" aria-expanded="false" v-pre><i class="fa fa-user fa-lg"> </i> <span class="caret">&nbsp;&nbsp;{{ Auth::user()->name }}</span></a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out fa-lg"></i>  {{ __('Logout') }}Logout</a></li>
+                            <i class="fa fa-sign-out fa-lg"></i>  {{ __('Logout') }}</a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -89,7 +89,7 @@
                     <li><a class="app-menu__item {{ Route::current()->getName()=='home'?'active':''}} " href="{{route('home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
                     <li class="treeview {{ Route::current()->getName()=='show_rentalbike'||Route::current()->getName()=='addform_rentalbike'||Route::current()->getName()=='print_rentalbike'|| Route::current()->getName()=='change_rentalbike'|| Route::current()->getName()=='search_rentalbike'?'is-expanded':''}} "><a class="app-menu__item  " href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-bicycle"></i><span class="app-menu__label">Rental Bikes</span></a>
                         <ul class="treeview-menu">
-                            <li><a class="treeview-item {{ Route::current()->getName()=='show_rentalbike'|| Route::current()->getName()=='change_rentalbike'|| Route::current()->getName()=='search_rentalbike'?'active':''}}" href="{{route('show_rentalbike')}}"  ><i class="icon  fa-sticky-note-o"></i> Show rental</a></li>
+                            <li><a class="treeview-item {{ Route::current()->getName()=='show_rentalbike'|| Route::current()->getName()=='change_rentalbike'|| Route::current()->getName()=='search_rentalbike'?'active':''}}" href="{{route('show_rentalbike')}}"  ><i class="icon fa fa-sticky-note-o"></i> Show rental</a></li>
                             <li><a class="treeview-item {{ Route::current()->getName()=='addform_rentalbike'||Route::current()->getName()=='print_rentalbike'?'active':''}}" href="{{route('addform_rentalbike')}}"  ><i class="icon fa fa-plus-square-o"></i> Add new rental</a></li>
                         </ul>
                     </li>
