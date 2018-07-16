@@ -101,11 +101,11 @@ class RentalController extends HomeController
         }else {
             session()->put('postreq',session('datetime'));
         }
-        $rules=['name' => 'required|max:255',
+        $rules=['name' => 'max:50|nullable',
             'phone' => 'required|digits_between:7,19',//|unique:user_gets,phone',
-            'second_name' => 'required|max:255',
-            'address' => 'required|max:255',
-            'email' => 'required|max:255|email', ///|unique:user_gets,email',
+            'second_name' => 'max:50|nullable',
+            'address' => 'max:250|nullable',
+            'email' => 'max:250|email|nullable', ///|unique:user_gets,email',
             'deposit' => 'required',
             'helmet'=>'integer|nullable',
             'lock'=>'integer|nullable',
@@ -187,13 +187,13 @@ class RentalController extends HomeController
         try {
             if(empty(session('change_id'))) {
                 DB::beginTransaction();
+                $unotenter=array();
+                empty($request->input('name'))?array_add($unotenter,'name','not enter'):array_add($unotenter,'name',$request->input('name'));
+                empty($request->input('second_name'))?array_add($unotenter,'second_name','not enter'):array_add($unotenter,'second_name',$request->input('second_name'));
+                empty($request->input('address'))?array_add($unotenter,'address','not enter'):array_add($unotenter,'address',$request->input('address'));
+                empty($request->input('email'))?array_add($unotenter,'email','not enter'):array_add($unotenter,'email',$request->input('email'));
                 $ugetid = User_get::firstOrCreate([
-                    'phone' => $request->input('phone')],[
-                    'name' => $request->input('name'),
-                    'second_name' => $request->input('second_name'),
-                    'address' => $request->input('address'),
-                    'email' => $request->input('email'),
-                ]);
+                    'phone' => $request->input('phone')],$unotenter);
                 $agid = new Agent();
                 $agid = $agid->select('id')->where('name', $request->input('agent'))->first();
                 //dd($agid);

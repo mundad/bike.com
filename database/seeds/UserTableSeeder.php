@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
         $employee->roles()->attach($role_manager);
 
         $manager = new User();
-            $manager->login = 'cashier1';
+        $manager->login = 'cashier1';
         $manager->name = 'manger Name';
         $manager->email = 'manager@example.com';
         $manager->password = bcrypt('735701');
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder
         $manager = new User();
         $manager->login = 'cashier3';
         $manager->name = 'manger Name';
-        $manager->email = 'manager@example.com';
+        $manager->email = 'manager3@example.com';
         $manager->password = bcrypt('735703');
         $manager->save();
         $manager->roles()->attach($role_manager);
@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
         $manager = new User();
         $manager->login = 'cashier4';
         $manager->name = 'manger Name';
-        $manager->email = 'manager2@example.com';
+        $manager->email = 'manager4@example.com';
         $manager->password = bcrypt('735704');
         $manager->save();
         $manager->roles()->attach($role_manager);

@@ -32,6 +32,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Agent ID:</td>
+                        <td>{{ $agent->name }}</td>
+                    </tr>
+                    <tr>
                         <td>Name:</td>
                         <td>{{ $rental->user_get->name.' '.$rental->user_get->second_name }}</td>
                     </tr>

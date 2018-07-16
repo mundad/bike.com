@@ -16,10 +16,10 @@ class CreateGetUserTable extends Migration
         Schema::create('user_gets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('phone',20)->unique()->index();
-            $table->string('name',50);
-            $table->string('second_name',50);
-            $table->string('address',250);
-            $table->string('email');
+            $table->string('name',50)->default('not enter');
+            $table->string('second_name',50)->default('not enter');
+            $table->string('address',250)->default('not enter');
+            $table->string('email',250)->default('not enter');
             $table->timestamps();
         });
     }
