@@ -47,7 +47,7 @@ DATE START:{{ $datestart }}
                     <td>{{ $rentalbike->user_get->phone }}</td>
                     <td>{{ 'Created:'.$rentalbike->created_at.'/ Deposit:'.$rentalbike->sale->deposit.'/ Payment method:'.$rentalbike->sale->paymant_method.'/ Insurance:'.$rentalbike->sale->insurance.'/ Sub total:'.$rentalbike->sale->totalmath.'/ Discount:'.$rentalbike->sale->dis }}</td>
                     <td>@if(isset($rentalbike->acsor->created_at))
-                  {{ 'Created:'.$rentalbike->acsor->created_at.'/ Helmet:'.$rentalbike->acsor->helmet.'/ Lock'.$rentalbike->acsor->lock.'/ Basket:'.$rentalbike->acsor->basket.'/ Baby seat:'.$rentalbike->acsor->baby_seat}}
+                  {{ 'Created:'.$rentalbike->acsor->created_at.'/ Helmet:'.$rentalbike->acsor->helmet.'/ Lock'.$rentalbike->acsor->lock.'/ Basket:'.$rentalbike->acsor->basket}}
                     @endif</td>
                     <td>{{ $rentalbike->sale->total }}</td>
                     @if(isset($sales[$rentalbike->id]))
@@ -67,7 +67,7 @@ DATE START:{{ $datestart }}
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>{{ 'Updated:'.$item['deleted_at'].'/ Helmet:'.$item['helmet'].'/ Lock'.$item['lock'].'/ Basket:'.$item['basket'].'/ Baby seat:'.$item['baby_seat']}}</td>
+                            <td>{{ 'Updated:'.$item['deleted_at'].'/ Helmet:'.$item['helmet'].'/ Lock'.$item['lock'].'/ Basket:'.$item['basket']}}</td>
                             <td></td>
                           </tr>
                         @endforeach

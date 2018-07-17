@@ -3,7 +3,7 @@ var bikes_qty=[];
 var prices_h=[];
 var prices_d=[];
 var insurance_b=[];
-var hr=0,date_in,date_out;
+var hr=0,date_in="",date_out="";
 var helmet,lock,basket,babyseat,tax_st=1,ins_st=0;
 var subtotal=0,total=0,subtotal_with_discount=0,discount=0,insurance=0,tax=0;
 $(document).ready(function(){
@@ -140,9 +140,32 @@ function total_price(){
 	subtotal=0;
 	total=0;
 	insurance=0;
+	var a=hr;
 	if(hr>0){
 		for(var i=1; i<=bikes_qty.length-1;i++){
-			subtotal=subtotal+(parseFloat(prices_h[i])*parseInt(bikes_qty[i])*hr);
+			switch(a){
+				case '1':
+					//alert(1);
+					subtotal=subtotal+(parseFloat(info[i-1]['price_h'])*parseInt(bikes_qty[i]));
+					break;
+				case '2':
+					//alert(2);
+					subtotal=subtotal+(parseFloat(info[i-1]['price_h_2'])*parseInt(bikes_qty[i]));
+					break;
+				case '3':
+					//alert(3);
+					subtotal=subtotal+(parseFloat(info[i-1]['price_h_3'])*parseInt(bikes_qty[i]));
+					break;
+				case '4':
+					//alert(4);
+					subtotal=subtotal+(parseFloat(info[i-1]['price_h_3'])*parseInt(bikes_qty[i]));
+					break;
+				case '5':
+					//alert(5);
+					subtotal=subtotal+(parseFloat(info[i-1]['price_h_5'])*parseInt(bikes_qty[i]));
+					break;
+			}
+			//subtotal=subtotal+(parseFloat(prices_h[i])*parseInt(bikes_qty[i])*hr);
 			if(bikes_qty[i]>0){
 				insurance=insurance+insurance_b[i];
 			}

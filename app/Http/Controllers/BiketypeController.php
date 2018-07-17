@@ -44,12 +44,18 @@ class BiketypeController extends HomeController
             }
             $this->validate($request, [
                 'price_h' => 'required|numeric|min:0',
+                'price_h_2' => 'required|numeric|min:0',
+                'price_h_3' => 'required|numeric|min:0',
+                'price_h_5' => 'required|numeric|min:0',
                 'price_d' => 'required|numeric|min:0',
                 'insurance' => 'required|numeric|min:0'
             ]);
             DB::table('biketypes')->where('id','=',$request->input('id'))->update([
                 'info' => $request->input('info'),
                 'price_h' => $request->input('price_h'),
+                'price_h_2' => $request->input('price_h_2'),
+                'price_h_3' => $request->input('price_h_3'),
+                'price_h_5' => $request->input('price_h_5'),
                 'price_d' => $request->input('price_d'),
                 'insurance' => $request->input('insurance')
             ]);
@@ -59,10 +65,22 @@ class BiketypeController extends HomeController
             $this->validate($request, [
                 'name' => 'required|max:255|unique:biketypes,name',
                 'price_h' => 'required|numeric|min:0',
+                'price_h_2' => 'required|numeric|min:0',
+                'price_h_3' => 'required|numeric|min:0',
+                'price_h_5' => 'required|numeric|min:0',
                 'price_d' => 'required|numeric|min:0',
                 'insurance' => 'required|numeric|min:0'
             ]);
-            Biketype::create(['name'=>$request->input('name'),'info' =>$request->input('info'),'price_h'=>$request->input('price_h'),'price_d'=>$request->input('price_d'),'insurance'=>$request->input('insurance')]);
+            Biketype::create([
+                'name'=>$request->input('name'),
+                'info' =>$request->input('info'),
+                'price_h'=>$request->input('price_h'),
+                'price_h_2'=>$request->input('price_h_2'),
+                'price_h_3'=>$request->input('price_h_3'),
+                'price_h_5'=>$request->input('price_h_5'),
+                'price_d'=>$request->input('price_d'),
+                'insurance'=>$request->input('insurance'),
+            ]);
             return redirect(route('show_biketype'));
         }
     }
@@ -78,6 +96,9 @@ class BiketypeController extends HomeController
             session()->put('old.name', $btype->name);
             session()->put('old.info', $btype->info);
             session()->put('old.price_h', $btype->price_h);
+            session()->put('old.price_h_2', $btype->price_h_2);
+            session()->put('old.price_h_3', $btype->price_h_3);
+            session()->put('old.price_h_5', $btype->price_h_5);
             session()->put('old.price_d', $btype->price_d);
             session()->put('old.insurance', $btype->insurance);
 

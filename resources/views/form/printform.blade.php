@@ -73,7 +73,6 @@
                         <td>Helmet: <b>{{$accessories->helmet}}</b>/
                             Lock: <b>{{$accessories->lock}}</b>/
                             Basket: <b>{{$accessories->basket}} </b>/
-                            Baby seat: <b>{{$accessories->baby_seat}}</b>
                         </td>
                     </tr>
                     @endif
@@ -94,11 +93,11 @@
                         <td><b>${{$rental->sale->total-($rental->sale->tax)}}</b></td>
                     </tr>
                     <tr>
-                        <td>NYC Tax({{ $tax }}%)</td>
+                        <td>NYC Tax( {{ $tax }} %)</td>
                         <td><b>${{($rental->sale->tax)}}</b></td>
                     </tr>
                     <tr>
-                        <td>Total after Tax(cash):</td>
+                        <td>Total after Tax:</td>
                         <td><b>${{ $rental->sale->total }}</b></td>
                     </tr>
                 </table>

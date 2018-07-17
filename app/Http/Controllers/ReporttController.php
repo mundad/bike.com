@@ -279,7 +279,6 @@ class ReporttController extends HomeController
                         $accessories_arr[$item->rental_id][$item->id]['lock']=$item->lock;
                         $accessories_arr[$item->rental_id][$item->id]['helmet']=$item->helmet;
                         $accessories_arr[$item->rental_id][$item->id]['basket']=$item->basket;
-                        $accessories_arr[$item->rental_id][$item->id]['baby_seat']=$item->baby_seat;
                         $accessories_arr[$item->rental_id][$item->id]['deleted_at']=$item->deleted_at;
 
                         $arr[$k] = $item->rental_id;

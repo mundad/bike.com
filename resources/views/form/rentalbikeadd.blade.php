@@ -20,31 +20,31 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="phone">Phone number</label>
-            <input   class="form-control" required class="form-control" placeholder="Enter phone number"  value="{{old('phone')}}"  name="phone" id="phone" type="text" >
+            <input   class="form-control" required class="form-control" placeholder="Enter phone number"  value="{{session('old.phone')}}"  name="phone" id="phone" type="text" >
         </div>
         <div class="form-group col-md-6">
             <label for="email">Email</label>
-            <input  class="form-control" placeholder="Enter email" value="{{old('email')}}"  name="email" id="email" type="text" >
+            <input  class="form-control" placeholder="Enter email" value="{{session('old.email')}}"  name="email" id="email" type="text" >
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input  class="form-control"  placeholder="Enter name" value="{{old('name')}}"  name="name"  id="name" type="text" >
+            <input  class="form-control"  placeholder="Enter name" value="{{session('old.name')}}"  name="name"  id="name" type="text" >
         </div>
         <div class="form-group col-md-6">
             <label for="secondname">Second name</label>
-            <input  class="form-control"  placeholder="Enter second name" value="{{old('second_name')}}"  name="second_name"  id="second_name" type="text" >
+            <input  class="form-control"  placeholder="Enter second name" value="{{session('old.second_name')}}"  name="second_name"  id="second_name" type="text" >
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label for="adress">Address</label>
-            <input  class="form-control" placeholder="Enter address"value="{{old('address')}}"  name="address"  id="address" type="text" >
+            <input  class="form-control" placeholder="Enter address"value="{{session('old.address')}}"  name="address"  id="address" type="text" >
         </div>
         <div class="form-group  col-md-6">
             <label for="deposit">Deposit</label>
-            <textarea  class="form-control" placeholder="Enter deposit"  name="deposit"  id="deposit">{{old('deposit')}}</textarea>
+            <textarea  class="form-control" placeholder="Enter deposit"  name="deposit"  id="deposit">{{session('old.deposit')}}</textarea>
 
         </div>
     </div>
@@ -57,9 +57,9 @@
         </div>
     <div class="row" id="bikes">
         @foreach($biketypes as $biketype)
-            <div class="form-group  col-md-4 float-left">
+            <div class="form-group  col-md-3 float-left">
                 <b>{{strtoupper($biketype->name)}}</b><br/>
-                <input name='qty_{{$biketype->id}}' id='qty_{{$biketype->id}}' value="{{old('qty_'.$biketype->id)}}" type="number"  class="form-control" onchange="change_qty({{ $biketype->id }})">
+                <input name='qty_{{$biketype->id}}' id='qty_{{$biketype->id}}' value="{{session('old.qty_'.$biketype->id)}}" type="number"  class="form-control" onchange="change_qty({{ $biketype->id }})">
                 {{--<input type="button" onclick="alert(bike[k])">--}}
             </div>
         @endforeach
@@ -67,13 +67,13 @@
     <div class="row">
         <div class="form-group  col-md-4 float-left">
             <b>HOURS</b><br/>
-        <input name='hrs' id='hrs' value="{{old('hrs')}}" type="number"  class="form-control"  >
+        <input name='hrs' id='hrs' value="{{session('old.hrs')}}" type="number"  class="form-control"  >
         </div><div class="form-group col-md-4 float-left">
             <b>TIME OUT</b><br/>
-        <input name='time_out' id='time_out' value="{{old('time_out')}}"  class="form-control"   type="date">
+        <input name='time_out' id='time_out' value="{{session('old.time_out')}}"  class="form-control"   type="date">
         </div><div class="form-group col-md-4 float-left">
             <b>TIME IN</b><br/>
-            <input name='time_in' id='time_in' value="{{old('time_in')}}"  class="form-control"   type="date">
+            <input name='time_in' id='time_in' value="{{session('old.time_in')}}"  class="form-control"   type="date">
         </div>
     </div>
     <hr/>
@@ -88,22 +88,18 @@
                 <th>Helmet</th>
                 <th>Lock.</th>
                 <th>Basket</th>
-                <th>Baby seat</th>
             </tr>
             </thead>
             <tbody>
             <tr class="active">
                 <td >
-                    <input type="number" class="form-control" id="helmet" value="{{old('helmet')}}"    name="helmet" placeholder="Enter count">
+                    <input type="number" class="form-control" id="helmet" value="{{session('old.helmet')}}"    name="helmet" placeholder="Enter count">
                 </td>
                 <td>
-                    <input type="number" class="form-control" id="lock" value="{{old('lock')}}"  name="lock"  placeholder="Enter count">
+                    <input type="number" class="form-control" id="lock" value="{{session('old.lock')}}"  name="lock"  placeholder="Enter count">
                 </td>
                 <td>
-                    <input type="number" class="form-control" id="basket" value="{{old('basket')}}"  name="basket" placeholder="Enter count">
-                </td>
-                <td>
-                    <input type="number" class="form-control" id="babyseat" value="{{old('baby_seat')}}"  name="baby_seat" placeholder="Enter count">
+                    <input type="number" class="form-control" id="basket" value="{{session('old.basket')}}"  name="basket" placeholder="Enter count">
                 </td>
             </tr>
             </tbody>
@@ -150,7 +146,7 @@
                         Insurance
                     </th>
                     <th>
-                        <input type="checkbox" id="taxx" name="tax" value="1" checked>
+                        <input type="checkbox" id="taxx" value="1" checked>
                         Tax@ {{ $tax }}
                     </th>
                     <th>Total</th>
@@ -159,7 +155,7 @@
                 <tbody>
                 <tr class="warning">
                     <td >
-                        <input disabled type="number"  value="{{old('sub_total')?old('sub_total'):0}}"  name="sub_total"   class="form-control" id="sb_t" >
+                        <input disabled type="number"  value="{{session('old.sub_total')?session('old.sub_total'):0}}"  name="sub_total"   class="form-control" id="sb_t" >
                     </td>
                     <td >
                         <input  type="number" class="form-control" value="{{session('old.dis')?session('old.dis'):0}}"  name="dis" id="dis" >
@@ -171,10 +167,10 @@
                         <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):0}}" class="form-control" id="ins" >
                     </td>
                     <td>
-                        <input disabled type="number"  value="{{old('tax')?old('tax'):0}}"  name="tax" class="form-control" id="tax" >
+                        <input name="tax" readonly type="number"  value="{{session('old.tax')?session('old.tax'):0}}"   class="form-control" id="tax" >
                     </td>
                     <td>
-                        <input type="text" placeholder="TOTAL" value="{{old('total')}}"  name="total" class="form-control" id="total" >
+                        <input type="text" readonly placeholder="TOTAL" value="{{session('old.total')}}"  name="total" class="form-control" id="total" >
                     </td>
                 </tr>
                 </tbody>

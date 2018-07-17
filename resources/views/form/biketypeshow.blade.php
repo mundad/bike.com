@@ -5,6 +5,9 @@
             <th>#</th>
             <th>Name</th>
             <th>price_h</th>
+            <th>price_h_2</th>
+            <th>price_h_3</th>
+            <th>price_h_5</th>
             <th>price_d</th>
             <th>insurance</th>
             <th>Izmenit</th>
@@ -16,6 +19,9 @@
             <tr><td>{{$biketype->id}}</td>
                 <td>{{$biketype->name}}</td>
                 <td>{{$biketype->price_h}}</td>
+                <td>{{$biketype->price_h_2}}</td>
+                <td>{{$biketype->price_h_3}}</td>
+                <td>{{$biketype->price_h_5}}</td>
                 <td>{{$biketype->price_d}}</td>
                 <td>{{$biketype->insurance}}</td>
                 <td><form method="post" action="{{route('change_biketype')}}" name="form">

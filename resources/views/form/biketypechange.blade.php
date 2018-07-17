@@ -21,6 +21,15 @@
         PRICE_H<input  class="form-control"  value="{{session('old.price_h')}}"   placeholder="PRICE_H" name="price_h" type="text">
     </div>
     <div class="form-group">
+        PRICE_H_2<input  class="form-control"  value="{{session('old.price_h_2')}}"   placeholder="PRICE_H_2" name="price_h_2" type="text">
+    </div>
+    <div class="form-group">
+        PRICE_H_3<input  class="form-control"  value="{{session('old.price_h_3')}}"   placeholder="PRICE_H_3" name="price_h_3" type="text">
+    </div>
+    <div class="form-group">
+        PRICE_H_5<input  class="form-control"  value="{{session('old.price_h_5')}}"   placeholder="PRICE_H_5" name="price_h_5" type="text">
+    </div>
+    <div class="form-group">
         PRICE_D<input  class="form-control"  value="{{session('old.price_d')}}"   placeholder="PRICE_D" name="price_d" type="text">
     </div>
     <div class="form-group">

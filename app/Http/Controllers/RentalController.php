@@ -67,6 +67,7 @@ class RentalController extends HomeController
     }
     public function addform(){
         session()->put('datetime',date("Y-m-d H:i:s"));
+        session()->put('old',[]);
         if(!empty(session('change_id'))) { session()->put('change_id',date("")); }
        //   dd(session('datetime'));
         $this->form=view('form.rentalbikeadd',[
@@ -105,12 +106,10 @@ class RentalController extends HomeController
             'phone' => 'required|digits_between:7,19',//|unique:user_gets,phone',
             'second_name' => 'max:50|nullable',
             'address' => 'max:250|nullable',
-            'email' => 'max:250|email|nullable', ///|unique:user_gets,email',
-            'deposit' => 'required',
+            'email' => 'max:250|email|nullable', ///|unique:user_gets,email', 'deposit' => 'required',
             'helmet'=>'integer|nullable',
             'lock'=>'integer|nullable',
             'pay'=>'integer|in:1,2',
-            'baby_seat'=>'integer|nullable',
             'basket'=>'integer|nullable',
             'total'=>'required|numeric',
             'sub_total'=>'numeric',
@@ -186,12 +185,13 @@ class RentalController extends HomeController
         //dd($qtr);
         try {
             if(empty(session('change_id'))) {
+                //dd($_POST);
                 DB::beginTransaction();
                 $unotenter=array();
                 empty($request->input('name'))?array_add($unotenter,'name','not enter'):array_add($unotenter,'name',$request->input('name'));
                 empty($request->input('second_name'))?array_add($unotenter,'second_name','not enter'):array_add($unotenter,'second_name',$request->input('second_name'));
                 empty($request->input('address'))?array_add($unotenter,'address','not enter'):array_add($unotenter,'address',$request->input('address'));
-                empty($request->input('email'))?array_add($unotenter,'email','not enter'):array_add($unotenter,'email',$request->input('email'));
+                empty($request->input('email'))?array_add($unotenter,'email','not@ent.er'):array_add($unotenter,'email',$request->input('email'));
                 $ugetid = User_get::firstOrCreate([
                     'phone' => $request->input('phone')],$unotenter);
                 $agid = new Agent();
@@ -210,7 +210,6 @@ class RentalController extends HomeController
                         'lock' => $request->input('lock')?$request->input('lock'):0 ,
                         'helmet' => $request->input('helmet')?$request->input('helmet'):0 ,
                         'basket' => $request->input('basket')?$request->input('basket'):0  ,
-                        'baby_seat' => $request->input('baby_seat')?$request->input('baby_seat'):0 ,
                     ]);
                 }
                 //dd($ph);
@@ -222,7 +221,24 @@ class RentalController extends HomeController
                             'bike_type_id' => $qtr[$i],
                             'count' => $request->input('qty_' . $qtr[$i]),
                         ]);
-                        $totalmath=$totalmath+$ph[$qtr[$i]]*$request->input('qty_' . $qtr[$i])*$hrs;
+                        switch ($hrs){
+                            case 1:
+                                $totalmath=$totalmath+$biketype->price_h*$request->input('qty_' . $biketype->id);
+                                break;
+                            case 2:
+                                $totalmath=$totalmath+$biketype->price_h_2*$request->input('qty_' . $biketype->id);
+                                break;
+                            case 3:
+                                $totalmath=$totalmath+$biketype->price_h_3*$request->input('qty_' . $biketype->id);
+                                break;
+                            case 4:
+                                $totalmath=$totalmath+$biketype->price_h_3*$request->input('qty_' . $biketype->id);
+                                break;
+                            case 5:
+                                $totalmath=$totalmath+$biketype->price_h_5*$request->input('qty_' . $biketype->id);
+                                break;
+                        }
+                        if($hrs>5)$totalmath=$totalmath+$biketype->price_d*$request->input('qty_' . $biketype->id);
                     } else {
                         // dd(2);
                         Rental_bike::create([
@@ -230,7 +246,7 @@ class RentalController extends HomeController
                             'bike_type_id' => $qtr[$i],
                             'count' => $request->input('qty_' . $qtr[$i]),
                         ]);
-                        $totalmath=$totalmath+$pd[$qtr[$i]]*$request->input('qty_' . $qtr[$i])*(strtotime($request->input('time_in'))-strtotime($request->input('time_out')))/3600/24;
+                        $totalmath=$totalmath+$biketype->price_d*$request->input('qty_' . $biketype->id);
                     }
                 }
                 if($hrs!=0){
@@ -249,8 +265,8 @@ class RentalController extends HomeController
                     'date_time_in' => $date2,
                     'date_time_out' => $date1,
                     'total' => $request->input('total'),
-                    'tax' => $request->input('tax'),
-                    'deposit' => $request->input('deposit'),
+                    'tax' => empty($request->input('tax'))?0:$request->input('tax'),
+                    'deposit' => empty($request->input('deposit'))?'not enter':$request->input('deposit'),
                     'insurance' => $request->input('insurance'),
                     'dis' => $request->input('dis'),
                 ]);
@@ -287,7 +303,6 @@ class RentalController extends HomeController
                                 $creac = array_add($creac, 'lock', !empty($request->input('lock')) ? $request->input('lock') : 0);
                                 $creac = array_add($creac, 'helmet', !empty($request->input('helmet')) ? $request->input('helmet') : 0);
                                 $creac = array_add($creac, 'basket', !empty($request->input('basket')) ? $request->input('basket') : 0);
-                                $creac = array_add($creac, 'baby_seat', !empty($request->input('baby_seat')) ? $request->input('baby_seat') : 0);
                             }
                             Accessories::where('rental_id', $rent->id)->update(['delete_user_id' => $userid]);
                             Accessories::where('rental_id', $rent->id)->delete();
@@ -298,7 +313,6 @@ class RentalController extends HomeController
                             $creac = array_add($creac, 'lock', !empty($request->input('lock')) ? $request->input('lock') : 0);
                             $creac = array_add($creac, 'helmet', !empty($request->input('helmet')) ? $request->input('helmet') : 0);
                             $creac = array_add($creac, 'basket', !empty($request->input('basket')) ? $request->input('basket') : 0);
-                            $creac = array_add($creac, 'baby_seat', !empty($request->input('baby_seat')) ? $request->input('baby_seat') : 0);
                         }
                     }
                     //dd($creac);
@@ -307,9 +321,16 @@ class RentalController extends HomeController
                         Accessories::create($creac);
                     }
                     //dd($rentbike);
-
+                    $date1 = 0;
+                    $date2 = 0;
+                    if ($hrs != 0) {
+                        $date1 = date('Y-m-d H:i:s');
+                        $date2 = date('Y-m-d H:i:s', strtotime($hrs . ' hour'));
+                    } else {
+                        $date1 = $request->input('time_out');
+                        $date2 = $request->input('time_in');
+                    }
                     $rentbikes = Rental_bike::all()->where('rental_id', $rent->id);
-
                     foreach ($biketypes as $biketype) {
                         foreach ($rentbikes as $rentbike) {
                             if ($biketype->id == $rentbike->bike_type_id) {
@@ -321,22 +342,33 @@ class RentalController extends HomeController
                                         'bike_type_id' => $biketype->id,
                                         'count' => $request->input('qty_' . $biketype->id),
                                     ]);
+                                    if($hrs!=0){
+                                        switch ($hrs){
+                                            case 1:
+                                                $totalmath=$totalmath+$biketype->price_h*$request->input('qty_' . $biketype->id);
+                                                break;
+                                            case 2:
+                                                $totalmath=$totalmath+$biketype->price_h_2*$request->input('qty_' . $biketype->id);
+                                                break;
+                                            case 3:
+                                                $totalmath=$totalmath+$biketype->price_h_3*$request->input('qty_' . $biketype->id);
+                                                break;
+                                            case 4:
+                                                $totalmath=$totalmath+$biketype->price_h_3*$request->input('qty_' . $biketype->id);
+                                                break;
+                                            case 5:
+                                                $totalmath=$totalmath+$biketype->price_h_5*$request->input('qty_' . $biketype->id);
+                                                break;
+                                        }
+                                        if($hrs>5)$totalmath=$totalmath+$biketype->price_d*$request->input('qty_' . $biketype->id);
+                                    }else{
+                                        $totalmath=$totalmath+$biketype->price_d*$request->input('qty_' . $biketype->id);
+                                    }
                                 }
                             }
                         }
                     }
-                    $date1 = 0;
-                    $date2 = 0;
-                    if ($hrs != 0) {
-                        $date1 = date('Y-m-d H:i:s');
-                        $date2 = date('Y-m-d H:i:s', strtotime($hrs . ' hour'));
-                    } else {
-                        $date1 = $request->input('time_out');
-                        $date2 = $request->input('time_in');
-                    }
-
                     $sl = Sale::where('rental_id', $rent->id)->first();
-
                     $hch = (strtotime($sl->date_time_in) - strtotime($sl->date_time_out)) / 3600;
                     if ($totalmath == 0) $totalmath = $sl->totalmath;
                     if ((strtotime($sl->date_time_out) != strtotime($request->input('time_out')) && !empty($request->input('time_out'))) || (strtotime($sl->date_time_in) != strtotime($request->input('time_in')) && !empty($request->input('time_in'))) || ($hch < 24 && $hch != $request->input('hrs')) || $sl->insurance != $request->input('insurance') || $sl->dis != $request->input('dis') || $sl->total != $request->input('total') || $sl->paymant_method != $request->input('pay') || $sl->tax != $request->input('tax') || $sl->deposit != $request->input('deposit') || $sl->totalmath != $totalmath) {
@@ -349,8 +381,8 @@ class RentalController extends HomeController
                             'total' => $request->input('total'),
                             'date_time_in' => $date2,
                             'date_time_out' => $date1,
-                            'tax' => $request->input('tax'),
-                            'deposit' => $request->input('deposit'),
+                            'tax' => empty($request->input('tax'))?0:$request->input('tax'),
+                            'deposit' => empty($request->input('deposit'))?'not enter':$request->input('deposit'),
                             'insurance' => $request->input('insurance'),
                             'dis' => $request->input('dis'),
                         ]);
@@ -364,16 +396,14 @@ class RentalController extends HomeController
             return redirect(route('addform_rentalbike'))->withErrors(['errors'=>'ERROR DATA BASE '.$e])->withInput();
             DB::rollBack();
         }
-
     }
-
     public function change(){
         $rent=false;
         if(isset($_POST['id'])) {
             session()->put('change_id',$_POST['id']);
             session()->put('datetime',date("Y-m-d H:i:s"));
         }
-            $rent=Rental::all()->where('id','=',session('change_id'))->first();
+        $rent=Rental::all()->where('id','=',session('change_id'))->first();
         //dd( $rent_bikes);
         if($rent) {
             $rent->load('user_get','sale');
@@ -400,7 +430,6 @@ class RentalController extends HomeController
                 session()->put('old.lock', $accessories->lock);
                 session()->put('old.helmet', $accessories->helmet);
                 session()->put('old.basket', $accessories->basket);
-                session()->put('old.baby_seat', $accessories->baby_seat);
             }else{
                 session()->put('old.lock', NULL);
                 session()->put('old.helmet', NULL);

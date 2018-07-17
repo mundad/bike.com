@@ -19,7 +19,6 @@ class CreateAccessoriesTable extends Migration
             $table->tinyInteger('lock')->default(0);
             $table->tinyInteger('helmet')->default(0);
             $table->tinyInteger('basket')->default(0);
-            $table->tinyInteger('baby_seat')->default(0);
             $table->Integer('delete_user_id')->default(0);
             $table->softDeletes();
             $table->timestamps();

@@ -54,7 +54,7 @@
     </div>
         <div class="row">
             @foreach($biketypes as $biketype)
-                <div class="form-group  col-md-4 float-left">
+                <div class="form-group  col-md-3 float-left">
                     <b>{{strtoupper($biketype->name)}}</b><br/>
                     <input name='qty_{{$biketype->id}}' id='qty_{{$biketype->id}}' value="{{session('old.qty_'.$biketype->id)}}" type="number"  class="form-control"  >
                 </div>
@@ -83,7 +83,6 @@
                 <th>Helmet</th>
                 <th>Lock.</th>
                 <th>Basket</th>
-                <th>Baby seat</th>
             </tr>
             </thead>
             <tbody>
@@ -96,9 +95,6 @@
                 </td>
                 <td>
                     <input type="number" class="form-control" id="basket" value="{{session('old.basket')}}"  name="basket" placeholder="Enter count">
-                </td>
-                <td>
-                    <input type="number" class="form-control" id="babyseat" value="{{session('old.baby_seat')}}"  name="baby_seat" placeholder="Enter count">
                 </td>
             </tr>
             </tbody>
@@ -145,7 +141,7 @@
                         Insurance
                     </th>
                     <th>
-                        <input type="checkbox" id="taxx" name="tax" value="1" checked>
+                        <input type="checkbox" id="taxx" name="taxx" value="1" checked>
                         Tax@ {{ $tax }}
                     </th>
                     <th>Total</th>
@@ -166,10 +162,10 @@
                         <input  type="number" name="insurance" value="{{session('old.insurance')?session('old.insurance'):0}}" class="form-control" id="ins" >
                     </td>
                     <td>
-                        <input disabled type="number"  value="{{session('old.tax')?session('old.tax'):0}}"  name="tax" class="form-control" id="tax" >
+                        <input readonly type="number"  value="{{session('old.tax')?session('old.tax'):0}}"  name="tax" class="form-control" id="tax" >
                     </td>
                     <td>
-                        <input type="number" placeholder="TOTAL" value="{{session('old.total')}}"  name="total" class="form-control" id="total" >
+                        <input type="number" readonly placeholder="TOTAL" value="{{session('old.total')}}"  name="total" class="form-control" id="total" >
                     </td>
                 </tr>
                 </tbody>

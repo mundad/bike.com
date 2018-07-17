@@ -18,6 +18,9 @@ class CreateBiketypeTable extends Migration
             $table->string('name');
             $table->text('info');
             $table->double('price_h',8,2);
+            $table->double('price_h_2',8,2);
+            $table->double('price_h_3',8,2);
+            $table->double('price_h_5',8,2);
             $table->double('price_d',8,2);
             $table->double('insurance',8,2);
             $table->softDeletes();
