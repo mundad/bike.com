@@ -16,7 +16,7 @@
              <input class="form-control" type="text" name="phone" placeholder="PHONE" @if(isset($phone)) value="{{$phone}}" @endif>
         </div>
         <div class="col-lg-3 form-group" >
-            <input class="form-control " type="date" name="date" @if(isset($date)) value="{{$date}}" @endif>
+            <input class="form-control " type="text" name="date" id="date" @if(isset($date)) value="{{$date}}" @endif>
         </div>
         <div class="col-lg-3 form-group" >
             <input type="submit" name="search" class="btn btn-primary" value="SEARCH">

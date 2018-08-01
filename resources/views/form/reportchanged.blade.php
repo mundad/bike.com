@@ -18,10 +18,10 @@ DATE START:{{ $datestart }}
 
         </div>
         <div class="col-lg-3 form-group" >
-            <input class="form-control " type="date" name="date"  value="{{old('date')}}" />
+            <input class="form-control " type="text" name="date" id="date"  value="{{old('date')}}" />
         </div>
         <div class="col-lg-3 form-group" >
-            <input class="form-control " type="date" name="date2"  value="{{old('date2')}}" />
+            <input class="form-control " type="text" name="date2" id="date2" value="{{old('date2')}}" />
         </div>
         <div class="col-lg-3 form-group" >
             <input type="submit" name="search" class="btn btn-primary" value="SEARCH"/>

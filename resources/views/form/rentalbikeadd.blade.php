@@ -70,10 +70,10 @@
         <input name='hrs' id='hrs' value="{{session('old.hrs')}}" type="number"  class="form-control"  >
         </div><div class="form-group col-md-4 float-left">
             <b>TIME OUT</b><br/>
-        <input name='time_out' id='time_out' value="{{session('old.time_out')}}"  class="form-control"   type="date">
+        <input name='time_out' id='time_out' value="{{session('old.time_out')}}"  class="form-control"   type="text">
         </div><div class="form-group col-md-4 float-left">
             <b>TIME IN</b><br/>
-            <input name='time_in' id='time_in' value="{{session('old.time_in')}}"  class="form-control"   type="date">
+            <input name='time_in' id='time_in' value="{{session('old.time_in')}}"  class="form-control"   type="text">
         </div>
     </div>
     <hr/>

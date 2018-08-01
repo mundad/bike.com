@@ -57,8 +57,10 @@ class ReporttController extends HomeController
                     return redirect(route('show_report'))->withErrors(['errors'=>'Please insert correct phone number'])->withInput();
                 }
             }elseif (empty($request->input('phone'))&&!empty($request->input('date'))){
-                $this->validate($request,['date'=>'required|date' ]);
-                $rent=Rental::with('user_get','sale')->whereDate('created_at','=',$request->input('date'))->orderBy('created_at','desc')->get();
+                $this->validate($request,['date'=>'required|date_format:m/d/Y' ]);
+                $arrdate=explode('/',$request->input('date'));
+                $date=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
+                $rent=Rental::with('user_get','sale')->whereDate('created_at','=',$date)->orderBy('created_at','desc')->get();
                 $this->form=view('form.reportshow',['rentalbikes'=>$rent,'date'=>$request->input('date')]);
                 $this->vars=array_add($this->vars,'form',$this->form);
                 $this->title="REPORT RENTAL BIKES SHOW";
@@ -125,19 +127,23 @@ class ReporttController extends HomeController
     }
     public function paidsearch(Request $request){
         if(Auth::user()->roles()->first()->name=='admin'){
+            $this->validate($request, [
+                'date' => 'required|date_format:m/d/Y',
+                'date2' => 'nullable|date_format:m/d/Y',
+            ]);
             $agent= Agent::where('id',session('agentsshow_report'));
             $b=0;
+            $arrdate=explode('/',$request->input('date'));
+            $date=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
             if($agent) {
                 $agent = $agent->first();
-                $this->validate($request, [
-                    'date' => 'required|date',
-                    'date2' => 'nullable|date',
-                ]);
                 if (!empty($request->input('date')) && empty($request->input('date2'))&&empty($request->input('take'))) {
-                    $rent = Rental::with('user_get', 'sale')->where('agent_id', session('agentsshow_report'))->where('created_at','>=',$request->input('date'))->where('created_at','<',date('Y-m-d H:i:s',strtotime($request->input('date'))+24*3600))->orderBy('created_at', 'desc')->get();
+                    $rent = Rental::with('user_get', 'sale')->where('agent_id', session('agentsshow_report'))->where('created_at','>=',$date)->where('created_at','<',date('Y-m-d H:i:s',strtotime($date)+24*3600))->orderBy('created_at', 'desc')->get();
                     $b = 3;
                 }elseif (!empty($request->input('date')) && !empty($request->input('date2'))&&empty($request->input('take'))) {
-                    $rent = Rental::with('user_get', 'sale')->where('agent_id', session('agentsshow_report'))->where('created_at','<=',$request->input('date2'))->where('created_at','>=',$request->input('date'))->orderBy('created_at', 'desc')->get();
+                    $arrdate=explode('/',$request->input('date2'));
+                    $date2=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
+                    $rent = Rental::with('user_get', 'sale')->where('agent_id', session('agentsshow_report'))->where('created_at','<=',$date2)->where('created_at','>=',$date)->orderBy('created_at', 'desc')->get();
                     $b = 3;
                 }
                 $this->form = view('form.reportpagent', [
@@ -185,18 +191,23 @@ class ReporttController extends HomeController
     }
     public function usersearch(Request $request){
         if(Auth::user()->roles()->first()->name=='admin'){
+            $this->validate($request, [
+                'date' => 'required|date_format:m/d/Y',
+                'date2' => 'nullable|date_format:m/d/Y',
+            ]);
             $user= User::where('id',session('usersshow_report'))->first();
             $b=0;
+            $arrdate=explode('/',$request->input('date'));
+            $date=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
             if($user) {
-                $this->validate($request, [
-                    'date' => 'required|date',
-                    'date2' => 'nullable|date',
-                ]);
                 if (!empty($request->input('date')) && empty($request->input('date2'))&&empty($request->input('take'))) {
-                    $rent = Rental::with('user_get', 'sale')->where('user_id',$user->id)->where('created_at','<',date('Y-m-d H:i:s',strtotime($request->input('date'))+24*3600))->where('created_at','>=',$request->input('date'))->orderBy('created_at', 'desc')->get();
+                    //dd($date);
+                    $rent = Rental::with('user_get', 'sale')->where('user_id',$user->id)->where('created_at','<',date('Y-m-d H:i:s',strtotime($date)+24*3600))->where('created_at','>=',$date)->orderBy('created_at', 'desc')->get();
                     $b = 3;
                 }elseif (!empty($request->input('date')) && !empty($request->input('date2'))&&empty($request->input('take'))) {
-                    $rent = Rental::with('user_get', 'sale')->where('user_id',$user->id)->where('created_at','<=',$request->input('date2'))->where('created_at','>=',$request->input('date'))->orderBy('created_at', 'desc')->get();
+                    $arrdate=explode('/',$request->input('date2'));
+                    $date2=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
+                    $rent = Rental::with('user_get', 'sale')->where('user_id',$user->id)->where('created_at','<=',$date2)->where('created_at','>=',$date)->orderBy('created_at', 'desc')->get();
                     $b = 3;
                 }
                 $this->form = view('form.reportuser', [
@@ -243,7 +254,14 @@ class ReporttController extends HomeController
         }elseif(!$datestart&&$dateend){
             $datestart=date("Y-m-d", strtotime("-" . date('d', strtotime($dateend)) . " day"));
         }elseif($datestart&&!$dateend){
-            $dateend=now();
+            $arrdate=explode('/',$datestart);
+            $datestart=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
+            $dateend=$arrdate[2].'-'.$arrdate[0].'-'.(string)($arrdate[1]*1+1);;
+        }elseif($datestart&&$dateend){
+            $arrdate=explode('/',$datestart);
+            $datestart=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
+            $arrdate=explode('/',$dateend);
+            $dateend=$arrdate[2].'-'.$arrdate[0].'-'.$arrdate[1];
         }
         if(Auth::user()->roles()->first()->name=='admin'){
             $user= User::where('id',session('usersshow_report'))->first();
@@ -313,13 +331,13 @@ class ReporttController extends HomeController
     }
     public function searchchangerent(Request $request){
         if(Auth::user()->roles()->first()->name=='admin'){
+            $this->validate($request, [
+                'date' => 'required|date_format:m/d/Y',
+                'date2' => 'nullable|date_format:m/d/Y|after:date',
+            ]);
             $user= User::where('id',session('usersshow_report'))->first();
             $b=0;
             if($user) {
-                $this->validate($request, [
-                    'date' => 'required|date',
-                    'date2' => 'nullable|date|after:date',
-                ]);
                 return $this->changerent($request->input('date'),$request->input('date2'));
             }
         }

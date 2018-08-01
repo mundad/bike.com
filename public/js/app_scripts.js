@@ -6,8 +6,9 @@ var insurance_b=[];
 var hr=0,date_in="",date_out="";
 var helmet,lock,basket,babyseat,tax_st=1,ins_st=0;
 var subtotal=0,total=0,subtotal_with_discount=0,discount=0,insurance=0,tax=0;
+var host=$(location).attr('hostname');
 $(document).ready(function(){
-	$.get("http://192.168.0.100/json/biketype",{},function(data){
+    $.get("http://"+ host +"/json/biketype",{},function(data){
 		data=JSON.parse(data);
 		info=data;
 		for(var id in data){
@@ -25,7 +26,7 @@ $(document).ready(function(){
 		if($("#phone").val().length>5){
 			var n=$("#phone").val();
 			
-            $.get('http://192.168.0.100/json/user',{ phone: n },function (data) {
+            $.get("http://"+ host +"/json/user",{ phone: n },function (data) {
                 data=JSON.parse(data);
                 $("#name").val(data[0]['name']);
                 $("#second_name").val(data[0]['second_name']);
@@ -167,7 +168,8 @@ function total_price(){
 			}
 			//subtotal=subtotal+(parseFloat(prices_h[i])*parseInt(bikes_qty[i])*hr);
 			if(bikes_qty[i]>0){
-				insurance=insurance+insurance_b[i];
+				insurance=insurance+(parseFloat(info[i-1]['insurance'])*parseInt(bikes_qty[i]));
+                //alert(parseFloat(info[i-1]['insurance']));
 			}
 		}
     } else if(hr==0 && date_out.length==10 && date_in.length==10 ){
@@ -177,7 +179,7 @@ function total_price(){
 			for(var i=1; i<=bikes_qty.length-1;i++){
 				subtotal=subtotal+(parseFloat(prices_d[i])*parseInt(bikes_qty[i])*day);
 				if(bikes_qty[i]>0){
-					insurance=insurance+insurance_b[i];
+                    insurance=insurance+(parseFloat(info[i-1]['insurance'])*parseInt(bikes_qty[i]));
 				}
 			}      
     }

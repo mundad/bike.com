@@ -117,12 +117,33 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/plugins/test.js')}}"></script>
+<script src="{{asset('js/plugins/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('js/print_check.js')}}"></script>
 <!-- The javascript plugin to display page loading on top-->
 <script src="{{asset('js/plugins/pace.min.js')}}"></script>
 <!-- Page specific javascripts-->
 <script type="text/javascript" src="{{asset('js/plugins/chart.js')}}"></script>
 <script type="text/javascript">
+    $('#time_in').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#time_out').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#date').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true,
+        todayHighlight: true
+    });
+    $('#date2').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true,
+        todayHighlight: true
+    });
     var data = {
         labels: ["January", "February", "March", "April", "May"],
         datasets: [
