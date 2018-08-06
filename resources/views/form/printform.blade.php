@@ -1,11 +1,11 @@
 
-<div class="row">
+<div class="row" style="font-size: 10px">
     <div class="col-md-4">
         <button class="btn btn-success" id="print_button"><i class="fa fa-print"></i>Print Check</button>
         <div id="page_print">
             <div id="page_content">
-                <h5 class="text-center">Central Park Wheels</h5>
-                <h2>BIKE RENTAL & GUIDED TOURS</h2>
+                <h6 class="text-center">Central Park Wheels</h6>
+                <h3 >BIKE RENTAL & GUIDED TOURS</h3>
                 <table>
                     <tr>
                         <td style="top: 0; margin-top: 0">address:</td>
@@ -101,7 +101,7 @@
                         <td><b>${{ $rental->sale->total }}</b></td>
                     </tr>
                 </table>
-                <h5 class="text-center">Terms and Conditions</h5>
+                <h6 class="text-center">Terms and Conditions</h6>
                 <p class="page_content_text">
                     <b>Activity.</b> I have chosen to rent and participate in bike rental services (hereinafter referred to as “the Activity,” which is organized by Central Park Wheels (hereinafter referred to as “CPW”). I understand that the Activity is inherently hazardous and i may be exposed to dangers and hazards, including some of the following: falls, injuries associated with a fall, injuries from lack of fitness, death, equipment failures and negligence of others. As a consequence of these riskis, i may be seriously hurt or disabled or may die from the resulting injuries and my property may also be damaged. In consideration of the permission to participate in the Activity, i agree to the terms and contained in this contract. I agree to the follow the rules and directions for the Activity, including any New York State traffic laws and park rules.
                 </p>
